@@ -1,0 +1,36 @@
+<div class="gallery">
+  {% for story in stories %}
+  <div class="gallery-col">
+    <div class="gallery-item">
+      <a class="gallery-link" href="story/{{story.id}}">
+        <div class="person-preview">
+
+          <!-- top half -->
+            {% if story.img!='' %}
+              <div class="img-preview"></div>
+            {% endif %}
+
+            <!-- bottom half -->
+            {% if story.img!='' %}
+              <div class="description-preview">
+            {% else %}
+              <div class="description-preview description-preview-no-img">
+            {% endif %}
+
+
+              <p id="story-{{story.id}}">
+              </p>
+              <!-- preview scripts -->
+
+              <script type="text/javascript">
+                shortCopy({{story|tojson}});
+              </script>
+
+            </div>
+
+          </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>

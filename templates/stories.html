@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% block title %}{{topic_data.name}}{% endblock %}
+{% block content %}
+
+  <div class="grid-container">
+    <div class="grid-x grid-pad-x padded-tall padded-short">
+      <div class="large-12 column">
+        <h1>{{ topic_data.name }}</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        </p>
+      </div>
+
+      <div class="large-4 medium-4 column" id="col-0">
+      </div>
+
+      <div class="large-4 medium-4 column" id="col-1">
+      </div>
+
+      <div class="large-4 medium-4 column" id="col-2">
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/setupStories.js') }}"></script>
+  <script type="text/javascript">
+    setupGallery({{stories|tojson}}, {{topic_data|tojson}}, {{topics|tojson}});
+    populatePreviews({{stories|tojson}});
+    shortCopy({{stories|tojson}});
+  </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+      {% extends "template.html" %}
+      {% block title %}Story{% endblock %}
+      {% block content %}
+      {% set index = id %}
+
+      <div class="person-section" id="story-container">
+        <div class="unit">
+          <div v-if="hasImg" class="img-holder">
+            <div v-bind:style="{ 'background-image': 'url(' + imgUrl + ')' }" class="story-img">
+
+            </div>
+          </div>
+          <div class="description">
+            <p id="story"></p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Custom Scripts -->
+      <script type="text/javascript" src="{{ url_for('static', filename='scripts/getStory.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='scripts/setupStory.js') }}"></script>
+      <script type="text/javascript">
+        imgResize()
+        var thisStory = getStory({{stories|tojson}}, {{index|tojson}});
+        storyPopulate(thisStory);
+      </script>
+
+
+
+      {% endblock %}
+
+  </body>
+</html>

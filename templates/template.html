@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>{% block title %}{% endblock %} - Our Thoughts On</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/topic-colors.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-desktop.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/otherthings.css') }}"> -->
+    <!-- Foundation -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+    <!-- CSS CDNs -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900&display=swap" rel="stylesheet">
+
+    <!-- javascript CDNs -->
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/dede60cbb6.js" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+  </head>
+  <body>
+
+    {% include 'includes/_navbar.html' %}
+
+    <div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    {% include 'includes/_footer.html' %}
+
+    <!-- CDNs -->
+
+    <!-- AddThis will go here -->
+    <!-- Foundation -->
+    <script src="{{ url_for('static', filename='scripts/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/vendor/what-input.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/vendor/foundation.min.js') }}"></script>
+    <!-- Custom Scripts -->
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='scripts/clickoutside.js') }}"></script> -->
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

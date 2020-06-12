@@ -1,0 +1,62 @@
+{% extends "template.html" %}
+{% block title %}Suggest a Topic{% endblock %}
+{% block content %}
+
+<div class="grid-container">
+
+  <div class="grid-x grid-padding-x padded">
+    <div class="medium-12 large-12 cell">
+      <h1>Suggest a Topic</h1>
+      <p>We're always looking for new topics to explore. You can help us do that by requesting a topic you'd like us to ask about!
+      </p>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x padded-short">
+    <div class="medium-12 large-12 cell">
+      <form class=""  method="POST">
+        <!-- action="{{ url_for('topic_success') }}" -->
+        {{ suggestTopicForm.csrf_token }}
+          <div class="grid-x grid-pad-x">
+            <div class="large-6 medium-8 column">
+              <div class="grid-x grid-pad-x callout form-callout rounded padded">
+                {% from "includes/_formhelpers.html" import render_field, error_class %}
+                <div class="large-12 medium-12 column">
+                  <h2>Our Servers Await</h2>
+                  <p>We love feedback! Fill out the form below and we'll reach out to you if we launch a section on your topic:</p>
+                </div>
+
+                <!-- name -->
+                <div class="large-8 medium-12 cell form-space">
+                  {{render_field(suggestTopicForm.name, class_=error)}}
+                </div>
+                <!-- email -->
+                <div class="large-8 medium-12 cell form-space">
+                  {{render_field(suggestTopicForm.email)}}
+                </div>
+                <!-- topic -->
+                <div class="large-8 medium-12 cell form-space">
+                  {{render_field(suggestTopicForm.topic_submission)}}
+                </div>
+                <!-- explanation -->
+                <div class="large-12 medium-12 cell form-space">
+                  {{render_field(suggestTopicForm.topic_explain, class_='tall')}}
+                </div>
+
+                <div class="large-12 cell form-space">
+                  <input type="submit" name="suggest-topic" class="button submit rounded-light" value="Submit">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      <script src="{{ url_for('static', filename='scripts/validatorHelp.js') }}"></script>
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

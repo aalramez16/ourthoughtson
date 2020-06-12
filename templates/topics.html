@@ -1,0 +1,67 @@
+{% extends "template.html" %}
+{% block title %}Topics{% endblock %}
+{% block content %}
+
+    <div class="colorsplash">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x padded">
+
+          <div class="large-6 column col-pad">
+            <!-- Image will go here -->
+          </div>
+          <div class="large-6 column col-pad">
+            <h1>Topics</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container">
+
+      <div class="grid-x grid-padding-x padded-short">
+
+        {% for topic in topics %}
+
+          <div class="large-6 medium-6 small-12 column col-pad">
+            <a href="{{url_for('stories', topic=topic.name.replace(' ', '_').lower())}}">
+              <div class="callout topic rounded-light" style="border-left: solid 8px {{topic.color}} !important;">
+                <div class="topic-pad">
+                  <h3>{{topic.name}}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        {% endfor %}
+
+    </div>
+    <div class="grid-x grid-padding-x padded-short">
+      <div class="large-12 column">
+        <hr/>
+      </div>
+
+
+
+        <div class="grid-x padded">
+
+          <div class="large-12 medium-12 column text-center">
+            <h5>Have a Suggestion?</h5>
+          </div>
+
+          <div class="large-8 medium-12 small-12 cell cta-copy">
+            <p>We're always looking to expand our topics and hear what people have to say, and your input helps us get there.
+            By suggesting us a topic, you get to help influence what makes sharing our thoughts so great!</p>
+          </div>
+
+          <div class="large-4 medium-12 small-12 cell cta-button">
+            <a class="button rounded-light" href="{{url_for('suggest_topic')}}">Suggest a Topic</a>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "template.html" %}
+{% block title %}Admin Portal{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin-portal.css') }}">
+
+
+<div class="grid-x grid-pad-x" id="panel-holder">
+  <div class="large-2 medium-4 column admin-panel">
+    <ul class="accordion"  data-accordion-menu>
+      <a href="javascript:Void(0)" onclick="showControlFor('#notifications')"><li id="notifications" class="admin-menu-item">Notifications</li></a>
+      <a href="javascript:Void(0)" onclick="showControlFor('#manageTopics')"><li id="manageTopics" class="admin-menu-item">Manage Topics</li></a>
+      <!-- <a href="javascript:Void(0)"><li id="managePosts" class="admin-menu-item">Manage Posts</li></a> -->
+      <a href="javascript:Void(0)" onclick="showControlFor('#registerAdmin')"><li id="registerAdmin" class="admin-menu-item">Add an Administrator</li></a>
+      <li class="admin-item-no-highlight"><a class="link-admin link-portal" href="{{url_for('logout')}}">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="large-10 medium-8 column">
+    <div class="top-bar admin-bar">
+      <h4 class="admin-header">Admin Portal</h4>
+    </div>
+    <div class="grid-x grid-pad-x">
+      <div class="large-12 medium-12 cell padded-short">
+
+        <!-- Begin Modules -->
+        <div id="notification-hub-container" class="control-item hidden">
+          {% include 'includes/_notification_hub.html' %}
+        </div>
+
+
+        <div id="topic-container" class="control-item hidden">
+            <ul class="menu horizontal">
+              <a href="javascript:Void(0)"><li>Add Topic</li></a>
+              <a href="javascript:Void(0)"><li>Edit Topic</li></a>
+              <a href="javascript:Void(0)"><li>Remove Topic</li></a>
+            </ul>
+
+
+          <div id="add-topic-container">
+            {% with topicForm=topicForm %}
+              {% include 'includes/_add_topic.html' %}
+            {% endwith %}
+          </div>
+
+          <div id="edit-topic-container">
+            {% with topicForm=topicForm %}
+              {% include 'includes/_edit_topic.html' %}
+            {% endwith %}
+          </div>
+        </div>
+
+        <div id="manage-questions-container" class="control-item hidden">
+          {% with topicForm=topicForm %}
+            {% include 'includes/_manage_questions.html' %}
+          {% endwith %}
+        </div>
+
+        <div id="admin-form-container" class="control-item hidden">
+          {% with adminForm=adminForm %}
+            {% include 'includes/_register_admin.html' %}
+          {% endwith %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="{{ url_for('static', filename='scripts/setupNewTopicPreview.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/setupAdminPortal.js')}}" charset="utf-8"></script>
+{% endblock %}
