@@ -1,0 +1,17 @@
+$oneThird: 1vw / 3;
+
+.gallery{
+  display: grid;
+  grid-template-columns: $oneThird $oneThird $oneThird;
+  width: 60%;
+  margin: auto;
+  padding: 24px;
+}
+
+.gallery-col{
+}
+
+.gallery-item{
+  width: 256px;
+  margin: 8px 0px;
+}
